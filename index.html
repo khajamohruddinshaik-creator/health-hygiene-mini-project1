@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Health and Hygiene</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #d7e4d7;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    /* --- NAVIGATION BAR --- */
+    .navbar {
+      background-color: #1b5e36;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .navbar a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      transition: opacity 0.2s;
+    }
+
+    .navbar a:hover {
+      opacity: 0.8;
+    }
+
+    /* --- COMMON SECTION STYLING --- */
+    section {
+      padding: 50px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      color: #2e6b34;
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #333;
+      font-size: 16px;
+      margin-bottom: 28px;
+    }
+
+    .card {
+      background-color: #e6eee4;
+      padding: 30px 36px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    /* --- 1. HOME SECTION --- */
+    .home-section {
+      text-align: center;
+      padding-top: 60px;
+    }
+
+    .home-card {
+      background-color: #e6eee4;
+      padding: 45px 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    .home-card h1 {
+      color: #1b5e36;
+      font-size: 36px;
+      margin-bottom: 14px;
+    }
+
+    .home-card p {
+      font-size: 17px;
+      color: #333;
+      max-width: 680px;
+      margin: 0 auto 24px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background-color: #1b5e36;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 12px 26px;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 15px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .btn-primary:hover {
+      background-color: #144728;
+    }
+
+    .btn-secondary {
+      background-color: #f4f7f4;
+      color: #222;
+      border: 1px solid #8fa38f;
+      padding: 11px 20px;
+      font-size: 14px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover {
+      background-color: #e2ebe0;
+    }
+
+    /* --- 2. HEALTHY FOOD SECTION --- */
+    .food-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+    }
+
+    .food-item {
+      background-color: #edf2eb;
+      padding: 20px;
+      border-radius: 8px;
+      border-left: 4px solid #2e6b34;
+    }
+
+    .food-item h3 {
+      color: #1b5e36;
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .food-item p {
+      font-size: 14px;
+      color: #333;
+    }
+
+    /* --- 3. HEALTH TIPS (HAND WASHING STEPS) --- */
+    .steps-container {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      text-align: center;
+    }
+
+    .step-block {
+      background-color: #edf2eb;
+      padding: 16px;
+      border-radius: 8px;
+    }
+
+    .step-block h3 {
+      font-size: 17px;
+      color: #111;
+      margin-bottom: 4px;
+    }
+
+    .step-block p {
+      font-size: 15px;
+      color: #333;
+    }
+
+    /* --- 4. DAILY HYGIENE CHECKLIST --- */
+    .check-badge {
+      background-color: #4caf50;
+      color: white;
+      font-size: 18px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+
+    .task-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .task-item {
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #edf2eb;
+      padding: 12px 16px;
+      border-radius: 6px;
+    }
+
+    .task-item:hover {
+      background-color: #e2ebe0;
+    }
+
+    .task-item input[type="checkbox"] {
+      width: 17px;
+      height: 17px;
+      margin-right: 12px;
+      accent-color: #1b5e36;
+      cursor: pointer;
+    }
+
+    /* --- 5. QUIZ SECTION --- */
+    .quiz-question {
+      background-color: #edf2eb;
+      padding: 18px 20px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+
+    .quiz-question p {
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #1b5e36;
+    }
+
+    .quiz-option {
+      display: block;
+      margin: 6px 0;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .quiz-option input[type="radio"] {
+      margin-right: 10px;
+      accent-color: #1b5e36;
+      cursor: pointer;
+    }
+
+    /* --- ACTION BUTTONS & MESSAGES --- */
+    .action-row {
+      margin-top: 22px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .feedback-msg {
+      margin-top: 14px;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #1b5e36;
+      color: white;
+      margin-top: 40px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar">
+    <a href="#home">Home</a>
+    <a href="#healthy-food">Healthy Food</a>
+    <a href="#health-tips">Health Tips</a>
+    <a href="#checklist">Checklist</a>
+    <a href="#quiz">Quiz</a>
+  </nav>
+
+  <!-- 1. HOME SECTION -->
+  <section id="home" class="home-section">
+    <div class="home-card">
+      <h1>Welcome to Health & Hygiene</h1>
+      <p>
+        Good personal hygiene and nutritious food are the foundation of a healthy, disease-free life. 
+        Explore healthy eating habits, follow proper hand-washing steps, track your daily hygiene, and test your knowledge!
+      </p>
+      <a href="#checklist" class="btn-primary">Start Daily Checklist</a>
+    </div>
+  </section>
+
+  <!-- 2. HEALTHY FOOD SECTION -->
+  <section id="healthy-food">
+    <h2 class="section-title">Healthy Food Guide</h2>
+    <p class="section-subtitle">Eat a balanced diet every day to boost your immunity and energy.</p>
+
+    <div class="card">
+      <div class="food-grid">
+        <div class="food-item">
+          <h3>Fruits & Vegetables</h3>
+          <p>Rich in vitamins, minerals, and fiber to protect your body against infections.</p>
+        </div>
+        <div class="food-item">
+          <h3>Whole Grains</h3>
+          <p>Brown rice, oats, and whole wheat give long-lasting energy throughout the day.</p>
+        </div>
+        <div class="food-item">
+          <h3>Proteins</h3>
+          <p>Pulses, eggs, nuts, fish, and lean meats help build and repair body tissues.</p>
+        </div>
+        <div class="food-item">
+          <h3>Clean Water</h3>
+          <p>Drink 7–8 glasses of safe, clean water daily to stay hydrated and flush out toxins.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. HEALTH TIPS (STEPS FOR PROPER HAND WASHING) -->
+  <section id="health-tips">
+    <h2 class="section-title">Health Tips: Proper Hand Washing</h2>
+    <p class="section-subtitle">Follow these 6 simple steps to keep your hands clean and germ-free.</p>
+
+    <div class="card">
+      <div class="steps-container">
+        <div class="step-block">
+          <h3>Step 1: Wet Your Hands</h3>
+          <p>Wet your hands with clean running water.</p>
+        </div>
+        <div class="step-block">
+          <h3>Step 2: Apply Soap</h3>
+          <p>Apply enough soap to cover your hands.</p>
+        </div>
+        <div class="step-block">
+          <h3>Step 3: Rub Your Hands</h3>
+          <p>Rub palms, fingers and the back of your hands.</p>
+        </div>
+        <div class="step-block">
+          <h3>Step 4: Clean Your Nails</h3>
+          <p>Clean between your fingers and under your nails.</p>
+        </div>
+        <div class="step-block">
+          <h3>Step 5: Rinse Your Hands</h3>
+          <p>Wash away the soap using clean water.</p>
+        </div>
+        <div class="step-block">
+          <h3>Step 6: Dry Your Hands</h3>
+          <p>Dry your hands with a clean towel.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. DAILY HYGIENE CHECKLIST -->
+  <section id="checklist">
+    <h2 class="section-title"><span class="check-badge">✔</span> Daily Hygiene Checklist</h2>
+    <p class="section-subtitle">Tick the activities you have completed today.</p>
+
+    <div class="card">
+      <div class="task-list">
+        <label class="task-item"><input type="checkbox" class="hygiene-checkbox" /> Brush teeth twice</label>
+        <label class="task-item"><input type="checkbox" class="hygiene-checkbox" /> Take a bath</label>
+        <label class="task-item"><input type="checkbox" class="hygiene-checkbox" /> Wash hands regularly</label>
+        <label class="task-item"><input type="checkbox" class="hygiene-checkbox" /> Eat healthy food</label>
+        <label class="task-item"><input type="checkbox" class="hygiene-checkbox" /> Drink clean water</label>
+        <label class="task-item"><input type="checkbox" class="hygiene-checkbox" /> Exercise daily</label>
+        <label class="task-item"><input type="checkbox" class="hygiene-checkbox" /> Keep surroundings clean</label>
+        <label class="task-item"><input type="checkbox" class="hygiene-checkbox" /> Sleep on time</label>
+      </div>
+
+      <div class="action-row">
+        <button type="button" id="submitChecklistBtn" class="btn-primary">Submit Checklist</button>
+        <button type="button" id="resetChecklistBtn" class="btn-secondary">Reset</button>
+      </div>
+
+      <p id="checklistStatus" class="feedback-msg"></p>
+    </div>
+  </section>
+
+  <!-- 5. QUIZ SECTION -->
+  <section id="quiz">
+    <h2 class="section-title">Health & Hygiene Quiz</h2>
+    <p class="section-subtitle">Test your knowledge! Select the right answers and click Submit Quiz.</p>
+
+    <div class="card">
+      <div class="quiz-question">
+        <p>1. How many times a day should you brush your teeth?</p>
+        <label class="quiz-option"><input type="radio" name="q1" value="wrong" /> Once a week</label>
+        <label class="quiz-option"><input type="radio" name="q1" value="correct" /> Twice a day</label>
+        <label class="quiz-option"><input type="radio" name="q1" value="wrong" /> Only before lunch</label>
+      </div>
+
+      <div class="quiz-question">
+        <p>2. What is the first step in proper hand washing?</p>
+        <label class="quiz-option"><input type="radio" name="q2" value="correct" /> Wet your hands with clean running water</label>
+        <label class="quiz-option"><input type="radio" name="q2" value="wrong" /> Dry your hands with a towel</label>
+        <label class="quiz-option"><input type="radio" name="q2" value="wrong" /> Clean under your nails</label>
+      </div>
+
+      <div class="quiz-question">
+        <p>3. Which of the following helps keep your body hydrated and flushes out toxins?</p>
+        <label class="quiz-option"><input type="radio" name="q3" value="wrong" /> Sugary soda</label>
+        <label class="quiz-option"><input type="radio" name="q3" value="wrong" /> Fried snacks</label>
+        <label class="quiz-option"><input type="radio" name="q3" value="correct" /> Clean drinking water</label>
+      </div>
+
+      <div class="quiz-question">
+        <p>4. Why is it important to keep our surroundings clean?</p>
+        <label class="quiz-option"><input type="radio" name="q4" value="correct" /> To prevent mosquitoes, germs, and diseases</label>
+        <label class="quiz-option"><input type="radio" name="q4" value="wrong" /> To waste time</label>
+        <label class="quiz-option"><input type="radio" name="q4" value="wrong" /> It is not important</label>
+      </div>
+
+      <div class="action-row">
+        <button type="button" id="submitQuizBtn" class="btn-primary">Submit Quiz</button>
+        <button type="button" id="resetQuizBtn" class="btn-secondary">Reset Quiz</button>
+      </div>
+
+      <p id="quizResult" class="feedback-msg"></p>
+    </div>
+  </section>
+
+  <footer>
+    Health and Hygiene Mini Project &copy; 2026
+  </footer>
+
+  <!-- JAVASCRIPT FOR CHECKLIST & QUIZ SUBMIT BUTTONS -->
+  <script>
+    // --- CHECKLIST SUBMIT LOGIC ---
+    const checkboxes = document.querySelectorAll('.hygiene-checkbox');
+    const submitChecklistBtn = document.getElementById('submitChecklistBtn');
+    const resetChecklistBtn = document.getElementById('resetChecklistBtn');
+    const checklistStatus = document.getElementById('checklistStatus');
+
+    submitChecklistBtn.addEventListener('click', () => {
+      const total = checkboxes.length;
+      const completed = document.querySelectorAll('.hygiene-checkbox:checked').length;
+
+      if (completed === total) {
+        checklistStatus.textContent = `Excellent! You completed all ${completed} out of ${total} daily hygiene tasks!`;
+        checklistStatus.style.color = '#1b5e36';
+      } else {
+        checklistStatus.textContent = `You completed ${completed} out of ${total} tasks. Please complete the remaining tasks!`;
+        checklistStatus.style.color = '#b33a3a';
+      }
+    });
+
+    resetChecklistBtn.addEventListener('click', () => {
+      checkboxes.forEach(cb => cb.checked = false);
+      checklistStatus.textContent = '';
+    });
+
+    // --- QUIZ SUBMIT LOGIC ---
+    const submitQuizBtn = document.getElementById('submitQuizBtn');
+    const resetQuizBtn = document.getElementById('resetQuizBtn');
+    const quizResult = document.getElementById('quizResult');
+
+    submitQuizBtn.addEventListener('click', () => {
+      const totalQuestions = 4;
+      let score = 0;
+      let answered = 0;
+
+      for (let i = 1; i <= totalQuestions; i++) {
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+        if (selected) {
+          answered++;
+          if (selected.value === 'correct') {
+            score++;
+          }
+        }
+      }
+
+      if (answered < totalQuestions) {
+        quizResult.textContent = `Please answer all ${totalQuestions} questions before submitting! (${answered}/${totalQuestions} answered)`;
+        quizResult.style.color = '#b33a3a';
+      } else {
+        quizResult.textContent = `Quiz Submitted! Your Score: ${score} / ${totalQuestions}`;
+        quizResult.style.color = score >= 3 ? '#1b5e36' : '#b33a3a';
+      }
+    });
+
+    resetQuizBtn.addEventListener('click', () => {
+      const radios = document.querySelectorAll('#quiz input[type="radio"]');
+      radios.forEach(r => r.checked = false);
+      quizResult.textContent = '';
+    });
+  </script>
+
+</body>
+</html>
